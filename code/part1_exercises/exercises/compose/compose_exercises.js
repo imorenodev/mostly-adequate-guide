@@ -23,7 +23,10 @@ var isLastInStock = function(cars) {
 // Exercise 2:
 // ============
 // use _.compose(), _.prop() and _.head() to retrieve the name of the first car
-var nameOfFirstCar = undefined;
+var nameOfFirstCar = function(cars) {
+  var first_car = _.head(cars);
+  return _.prop('name', first_car);
+}
 
 
 // Exercise 3:
@@ -39,11 +42,13 @@ var averageDollarValue = function(cars) {
 
 // Exercise 4:
 // ============
-// Write a function: sanitizeNames() using compose that takes an array of cars and returns a list of lowercase and underscored names: e.g: sanitizeNames([{name: "Ferrari FF"}]) //=> ["ferrari_ff"].
+// Write a function: sanitizeNames() using compose that takes an array of cars and 
+// returns a list of lowercase and underscored names: 
+// e.g: sanitizeNames([{name: "Ferrari FF"}]) //=> ["ferrari_ff"].
 
 var _underscore = replace(/\W+/g, '_'); //<-- leave this alone and use to sanitize
 
-var sanitizeNames = undefined;
+var sanitizeNames = _.map(_.compose(_underscore, toLowerCase, _.prop('name'))); 
 
 
 // Bonus 1:
