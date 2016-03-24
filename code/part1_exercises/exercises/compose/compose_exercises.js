@@ -60,6 +60,7 @@ var availablePrices = function(cars) {
   return available_cars.map(function(x){
     return accounting.formatMoney(x.dollar_value)
   }).join(', ');
+  return cars.map_compose(accounting.formatMoney(x.dollar_value), _.prop('in_stock'));
 };
 
 
